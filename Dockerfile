@@ -9,7 +9,7 @@ ADD \
     package.json \
     tsconfig.json \
     yarn.lock \
-    /build
+    /build/
 RUN yarn install
 # Once dependencies are installed, then add source and compile
 ADD src/ /build/
@@ -25,7 +25,7 @@ ADD \
     package.json \
     tsconfig.json \
     yarn.lock \
-    /app
+    /app/
 # Add dependency declarations then install prod-only (we've already built the application)
 # Yes downloading twice is slow, if it becomes an issue then we could use a dependency cache for
 # the build, but for most uses the dependencies won't change too much so docker cache should be OK

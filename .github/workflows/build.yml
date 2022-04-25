@@ -9,10 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build container
-        run: docker build -t ghcr.io/TRManderson/pendula-devops-exercise:${{ github.sha }} .
+        run: docker build -t ghcr.io/trmanderson/pendula-devops-exercise:${{ github.sha }} .
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Push container
         run: |
-          docker tag ghcr.io/TRManderson/pendula-devops-exercise:${{ github.sha }} ghcr.io/TRManderson/pendula-devops-exercise:latest
-          docker push ghcr.io/TRManderson/pendula-devops-exercise:${{ github.sha }} ghcr.io/TRManderson/pendula-devops-exercise:latest
+          docker tag ghcr.io/trmanderson/pendula-devops-exercise:${{ github.sha }} ghcr.io/trmanderson/pendula-devops-exercise:latest
+          docker push ghcr.io/trmanderson/pendula-devops-exercise:${{ github.sha }} ghcr.io/trmanderson/pendula-devops-exercise:latest

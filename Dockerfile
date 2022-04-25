@@ -34,3 +34,5 @@ RUN yarn install --production=true
 # (especially because we're not building sourcemaps)
 ADD src/ /app/
 COPY --from=build /build/dist/ /app/dist
+
+CMD yarn start

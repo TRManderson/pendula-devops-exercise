@@ -1,2 +1,4 @@
 config:
-  pendula-devops-exercise:replicas: "1"
+  pendula-devops-exercise:postgresPassword: password
+  pendula-devops-exercise:postgresUser: postgres
+  pendula-devops-exercise:replicas: "3"

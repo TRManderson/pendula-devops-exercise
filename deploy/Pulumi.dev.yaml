@@ -1,0 +1,2 @@
+config:
+  pendula-devops-exercise:replicas: "1"

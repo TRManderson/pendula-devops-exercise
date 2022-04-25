@@ -1,0 +1,18 @@
+name: container-build
+on: [push]
+jobs:
+  container-build:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build container
+        run: docker build ghcr.io/TRManderson/pendula-devops-exercise:${{ github.sha }}
+      - name: Log in to registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+      - name: Push container
+        run: |
+          docker tag ghcr.io/TRManderson/pendula-devops-exercise:${{ github.sha }} ghcr.io/TRManderson/pendula-devops-exercise:latest
+          docker push ghcr.io/TRManderson/pendula-devops-exercise:${{ github.sha }} ghcr.io/TRManderson/pendula-devops-exercise:latest

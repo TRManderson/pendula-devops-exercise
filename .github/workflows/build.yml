@@ -15,4 +15,6 @@ jobs:
       - name: Push container
         run: |
           docker tag ghcr.io/trmanderson/pendula-devops-exercise:${{ github.sha }} ghcr.io/trmanderson/pendula-devops-exercise:latest
-          docker push ghcr.io/trmanderson/pendula-devops-exercise:${{ github.sha }} ghcr.io/trmanderson/pendula-devops-exercise:latest
+          # Latest first for concurrency control reasons
+          docker push ghcr.io/trmanderson/pendula-devops-exercise:latest
+          docker push ghcr.io/trmanderson/pendula-devops-exercise:${{ github.sha }}
